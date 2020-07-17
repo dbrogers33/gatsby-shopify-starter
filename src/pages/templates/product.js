@@ -2,6 +2,8 @@ import React from "react"
 
 import Layout from "../../components/layout"
 import Hero from "../../components/hero/small-hero"
+import VariantItem from "../../components/VariantItem"
+
 
 const ProductTemplate = ({ pageContext, data }) => {
   const { product } = pageContext
@@ -12,21 +14,24 @@ const ProductTemplate = ({ pageContext, data }) => {
         <h1 className="text-3xl font-bold">{product.title}</h1>
         <h3 className="text-xl font-bold">${product.priceRange.minVariantPrice.amount}</h3>
         <div style={{ display: "flex", justifyContent: "space-around" }}>
-        {product.images.map(image => {
-          return (
-            <figure key={image.originalSrc}>
-              <img
-                src={image.originalSrc}
-                alt={product.title}
-                style={{
-                  height: "auto",
-                  width: "50%",
-                }}
-              />
-            </figure>
-          )
-        })}
-      </div>
+          {product.images.map(image => {
+            return (
+              <figure key={image.originalSrc}>
+                <img
+                  src={image.originalSrc}
+                  alt={product.title}
+                  style={{
+                    height: "auto",
+                    width: "50%",
+                  }}
+                />
+              </figure>
+            )
+          })}
+        </div>
+        {/* {product.variants.map(variant => {
+          return <VariantItem variant={variant} key={variant.shopifyId} />
+        })} */}
         <div>{product.description}</div>
       </div>
     </Layout>
